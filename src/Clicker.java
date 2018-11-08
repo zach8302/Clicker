@@ -1,3 +1,7 @@
+import java.util.TimerTask;
+import javax.swing.*;
+import java.util.Timer;
+
 public class Clicker {
     private int score;
     private int clickValue = 1;
@@ -11,6 +15,15 @@ public class Clicker {
         pointsPerSecond += p1.pointValue;
         clickValue += p1.clickValue;
         p1.increasePrice(); //hi
+    }
+    public void addPoints() {
+       while (pointsPerSecond>0){
+        try{
+            Thread.sleep(1000);
+            score+=pointsPerSecond;
+        }catch(Exception e) {
+        }
+    }
     }
 
 }
