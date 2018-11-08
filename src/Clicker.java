@@ -10,7 +10,7 @@ public class Clicker {
     public void buy(Products p1){
         pointsPerSecond += p1.pointValue;
         clickValue += p1.clickValue;
-        p1.increasePrice();
+        p1.increasePrice(); //hi
     }
 
 }
