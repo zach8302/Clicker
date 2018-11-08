@@ -17,7 +17,8 @@ public class ClickerGraphics extends JPanel implements MouseListener {
         addMouseListener (this);
     }
 
-    public void mouseClicked (MouseEvent e) {
+    public void mouseClicked (MouseEvent e, Clicker c1) {
+        c1.click();
         x = e.getX() - 20;
         y = e.getY() - 20;
         repaint ( );

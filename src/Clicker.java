@@ -7,7 +7,7 @@ public class Clicker {
     private int clickValue = 1;
     private int pointsPerSecond;
 
-    private void click() {
+    public void click() {
         score += clickValue;
     }
 
