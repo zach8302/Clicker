@@ -2,7 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class ClickerGraphics extends JPanel implements MouseListener {
+public class ClickerGraphics extends JPanel implements MouseListener, ActionListener {
 
     private int myWindowWidth = 300;
     private int myWindowHeight = 400;
@@ -14,7 +14,7 @@ public class ClickerGraphics extends JPanel implements MouseListener {
     public ClickerGraphics () {
         JFrame myFrame = new JFrame();
         myFrame.setSize(myWindowWidth, myWindowHeight);
-        myFrame.add(this);
+        myFrame.getContentPane().add(this);
         JButton clickButton = new JButton("Click Me!");
         this.add(clickButton);
         clickButton.addActionListener(this::actionPerformed);
@@ -25,7 +25,7 @@ public class ClickerGraphics extends JPanel implements MouseListener {
 
     public void actionPerformed(ActionEvent e){
         clicker1.click();
-        System.out.println(clicker1.score);
+        repaint();
     }
 
     public void mouseClicked(MouseEvent e) {
@@ -34,6 +34,8 @@ public class ClickerGraphics extends JPanel implements MouseListener {
     }
 
     public void paintComponent (Graphics g) {
+        g.clearRect(0,0,myWindowWidth,myWindowHeight);
+        g.drawString(clicker1.numText,myWindowWidth/2,myWindowHeight/2);
 
     }
 
@@ -49,8 +51,5 @@ public class ClickerGraphics extends JPanel implements MouseListener {
     public void mouseExited (MouseEvent event) {
     }
 
-    public void callClick(Clicker c1){
-        c1.click();
-    }
 
 }

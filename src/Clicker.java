@@ -6,9 +6,11 @@ public class Clicker {
     public int score;
     private int clickValue = 1;
     private int pointsPerSecond;
+    public String numText = "";
 
     public void click() {
         score += clickValue;
+        numText = score + "";
     }
 
     public void buy(Products p1){
