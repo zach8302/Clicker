@@ -9,24 +9,32 @@ public class ClickerGraphics extends JPanel implements MouseListener {
     private int x;
     private int y;
 
+    Clicker clicker1 = new Clicker();
+
     public ClickerGraphics () {
         JFrame myFrame = new JFrame();
         myFrame.setSize(myWindowWidth, myWindowHeight);
         myFrame.add(this);
+        JButton clickButton = new JButton("Click Me!");
+        this.add(clickButton);
+        clickButton.addActionListener(this::actionPerformed);
+
         myFrame.setVisible(true);
         addMouseListener (this);
     }
 
-    public void mouseClicked (MouseEvent e, Clicker c1) {
-        c1.click();
-        x = e.getX() - 20;
-        y = e.getY() - 20;
-        repaint ( );
+    public void actionPerformed(ActionEvent e){
+        clicker1.click();
+        System.out.println(clicker1.score);
+    }
+
+    public void mouseClicked(MouseEvent e) {
+
+
     }
 
     public void paintComponent (Graphics g) {
-        g.setColor(Color.pink);
-        g.fillOval(x,y,50,50);
+
     }
 
     public void mouseReleased (MouseEvent event) {
@@ -39,6 +47,10 @@ public class ClickerGraphics extends JPanel implements MouseListener {
     }
 
     public void mouseExited (MouseEvent event) {
+    }
+
+    public void callClick(Clicker c1){
+        c1.click();
     }
 
 }

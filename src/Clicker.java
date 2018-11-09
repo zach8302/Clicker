@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.util.Timer;
 
 public class Clicker {
-    private int score;
+    public int score;
     private int clickValue = 1;
     private int pointsPerSecond;
 
