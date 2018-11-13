@@ -16,9 +16,6 @@ public class Products {
 
     }
 
-    Products p3 = new Products(0,1,10,0);
-
-    Products p2 = new Products(1,0,10,0);
 
 
 }

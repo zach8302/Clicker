@@ -2,7 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class ClickerGraphics extends JPanel implements MouseListener, ActionListener {
+public class ClickerGraphics extends JPanel implements MouseListener{
 
     private int myWindowWidth = 300;
     private int myWindowHeight = 400;
@@ -10,23 +10,40 @@ public class ClickerGraphics extends JPanel implements MouseListener, ActionList
     private int y;
 
     Clicker clicker1 = new Clicker();
+    Products clickUpdgrade = new Products(0,1,10,0);
 
     public ClickerGraphics () {
         JFrame myFrame = new JFrame();
         myFrame.setSize(myWindowWidth, myWindowHeight);
         myFrame.getContentPane().add(this);
-        JButton clickButton = new JButton("Click Me!");
-        this.add(clickButton);
-        clickButton.addActionListener(this::actionPerformed);
+
+        JButton shopButton = new JButton("Shop!");
+        this.add(shopButton);
+        shopButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JFrame myFrame = new JFrame();
+                JPanel panel = new JPanel();
+                myFrame.setSize(myWindowWidth, myWindowHeight);
+                myFrame.getContentPane().add(panel);
+                myFrame.setVisible(true);
+                JButton buyButton = new JButton("Buy!");
+                panel.add(buyButton);
+                buyButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        clicker1.buy(clickUpdgrade);
+                    }
+                    }
+                );
+            }
+        });
 
         myFrame.setVisible(true);
         addMouseListener (this);
+
+
     }
 
-    public void actionPerformed(ActionEvent e){
-        clicker1.click();
-        repaint();
-    }
+
 
     public void mouseClicked(MouseEvent e) {
 
@@ -43,6 +60,8 @@ public class ClickerGraphics extends JPanel implements MouseListener, ActionList
     }
 
     public void mousePressed (MouseEvent event) {
+        clicker1.click();
+        repaint();
     }
 
     public void mouseEntered (MouseEvent event) {
